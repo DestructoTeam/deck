@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Deck</string>
+    <string name="login">login</string>
+    <string name="sign_in">sign in</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
 </resources>
