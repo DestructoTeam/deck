@@ -1,16 +1,28 @@
 package com.destructo.deck
 
-import android.support.v7.app.AppCompatActivity
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
+import android.support.v7.app.AppCompatActivity
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import com.google.firebase.auth.FirebaseAuth
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.ErrorCodes
+import com.firebase.ui.auth.IdpResponse
+import org.jetbrains.anko.clearTask
+import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.newTask
 
 class SignInActivity : AppCompatActivity() {
 
-    private val mAuth = FirebaseAuth.getInstance()
+    private val RC_SIGN_IN = 1
+
+    private val signInProviders =
+            listOf(AuthUI.IdpConfig.EmailBuilder()
+                    .setAllowNewAccounts(true)
+                    .setRequireName(true)
+                    .build()
+            )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,23 +33,33 @@ class SignInActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.login)
 
         loginButton.setOnClickListener {
-            login(emailButton.text.toString(), passwordButton.text.toString())
+            val intent = AuthUI.getInstance().createSignInIntentBuilder()
+                    .setAvailableProviders(signInProviders)
+                    .build()
+            startActivityForResult(intent, RC_SIGN_IN)
         }
     }
 
-    private fun login (email: String, password: String){
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
-        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
+        if (requestCode == RC_SIGN_IN){
+            val response = IdpResponse.fromResultIntent(data)
 
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this) { task ->
-                        if (task.isSuccessful) {
-                            val user = mAuth.currentUser
-                            Toast.makeText(this, "Success", Toast.LENGTH_SHORT)
-                        } else {
-                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT)
-                        }
-                    }
+            if (resultCode == Activity.RESULT_OK) {
+                startActivity(intentFor<MainActivity>().newTask().clearTask())
+            }
+            else if (resultCode == Activity.RESULT_CANCELED) {
+                if (response == null) return
+
+                when (response.error?.errorCode) {
+                    ErrorCodes.NO_NETWORK ->
+                            "No network"
+                    ErrorCodes.UNKNOWN_ERROR ->
+                            "Unknown Error"
+                }
+            }
         }
+
     }
 }
