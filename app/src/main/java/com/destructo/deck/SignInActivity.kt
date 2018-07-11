@@ -28,8 +28,6 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        val emailButton: EditText = findViewById(R.id.email)
-        val passwordButton: EditText = findViewById(R.id.password)
         val loginButton: Button = findViewById(R.id.login)
 
         loginButton.setOnClickListener {
