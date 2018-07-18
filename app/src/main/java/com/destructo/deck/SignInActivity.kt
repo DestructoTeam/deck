@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
-import android.widget.EditText
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -28,13 +27,12 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
 
-        val emailButton: EditText = findViewById(R.id.email)
-        val passwordButton: EditText = findViewById(R.id.password)
         val loginButton: Button = findViewById(R.id.login)
 
         loginButton.setOnClickListener {
             val intent = AuthUI.getInstance().createSignInIntentBuilder()
                     .setAvailableProviders(signInProviders)
+                    .setLogo(R.drawable.ic_book)
                     .build()
             startActivityForResult(intent, RC_SIGN_IN)
         }

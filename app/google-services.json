@@ -31,6 +31,14 @@
           }
         },
         {
+          "client_id": "771131780481-sg66c8tsg7vqsrme824g03t9n4amvvml.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.destructo.deck",
+            "certificate_hash": "cfea728b9062cfab637848b26b07e13d5ee23e01"
+          }
+        },
+        {
           "client_id": "771131780481-7jqhfjpo6ens9qfbveg3hls008506tea.apps.googleusercontent.com",
           "client_type": 3
         }
