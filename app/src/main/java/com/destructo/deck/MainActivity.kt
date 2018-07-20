@@ -1,7 +1,9 @@
 package com.destructo.deck
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import com.destructo.deck.fragment.MyAccountFragment
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
