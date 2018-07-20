@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.Button
+import com.destructo.deck.util.FirestoreUtil
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.ErrorCodes
 import com.firebase.ui.auth.IdpResponse
@@ -45,7 +46,10 @@ class SignInActivity : AppCompatActivity() {
             val response = IdpResponse.fromResultIntent(data)
 
             if (resultCode == Activity.RESULT_OK) {
-                startActivity(intentFor<MainActivity>().newTask().clearTask())
+                FirestoreUtil.initCurrentUserIfFirstTime {
+                    startActivity(intentFor<MainActivity>().newTask().clearTask())
+                }
+                
             }
             else if (resultCode == Activity.RESULT_CANCELED) {
                 if (response == null) return
