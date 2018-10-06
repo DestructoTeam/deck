@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Deck</string>
-    <string name="login">login</string>
-    <string name="sign_in">sign in</string>
-    <string name="email">email</string>
-    <string name="password">password</string>
+    <string name="app_name">MyDeck</string>
+    <string name="title_home">Profile</string>
+    <string name="title_dashboard">Cards Lists</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -2,24 +2,42 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/cardview_dark_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignInActivity">
 
-
-    <Button
-        android:id="@+id/login"
-        style="@android:style/Widget.Material.Button"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="248dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="122dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/sign_in"
-        android:textSize="25sp"
+        android:src="@drawable/ic_assignment_ind_black_24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.252" />
+
+    <Button
+        android:id="@+id/account_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Sign In"
+        android:textColor="@android:color/white"
+        app:layout_behavior="com.resocoder.productivity.weeksweep.behaviors.ShrinkBehavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintVertical_bias="0.257" />
+
 </android.support.constraint.ConstraintLayout>
